@@ -1,0 +1,22 @@
+---
+# Source: service-broker/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-service-broker
+  namespace: default
+  labels:
+    chart: "service-broker-0.3.1"
+    app: "service-broker"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  ports:
+  # Port used to expose admission webhook apiserver
+  - name: api
+    port: 443
+    targetPort: 8443
+  selector:
+    app: service-broker
+    release: release-name
+

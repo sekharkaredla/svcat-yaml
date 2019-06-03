@@ -1,0 +1,138 @@
+---
+# Source: service-broker/templates/configmap.yaml
+
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kubedb
+  namespace: default
+  labels:
+    chart: "service-broker-0.3.1"
+    app: "service-broker"
+    release: "release-name"
+    heritage: "Tiller"
+data:
+  elasticsearch.yaml: |
+    id: 315fc21c-829e-4aa1-8c16-f7921c33550d
+    name: elasticsearch
+    description: KubeDB managed ElasticSearch
+    bindable: true
+    planupdatable: true
+    metadata:
+      displayName: KubeDB managed ElasticSearch
+      imageUrl: https://cdn.appscode.com/images/logo/databases/elasticsearch.png
+    plans:
+    - id: c4e99557-3a81-452e-b9cf-660f01c155c0
+      name: demo-elasticsearch
+      description: Demo Standalone Elasticsearch database
+      free: true
+    - id: 2f05622b-724d-458f-abc8-f223b1afa0b9
+      name: demo-elasticsearch-cluster
+      description: Demo Elasticsearch cluster
+      free: true
+    - id: 6fa212e2-e043-4ae9-91c2-8e5c4403d894
+      name: elasticsearch
+      description: Elasticsearch cluster with custom specification
+      free: true
+  memcached.yaml: |
+    id: d88856cb-fe3f-4473-ba8b-641480da810f
+    name: memcached
+    description: KubeDB managed Memcached
+    bindable: true
+    planupdatable: true
+    metadata:
+      displayName: KubeDB managed Memcached
+      imageUrl: https://cdn.appscode.com/images/logo/databases/memcached.png
+    plans:
+    - id: af1ce2dc-5734-4e41-aaa2-8aa6a58d688f
+      name: demo-memcached
+      description: Demo Memcached
+      free: true
+    - id: d40e49b2-f8fb-4d47-96d3-35089bd0942d
+      name: memcached
+      description: Memcached with custom specification
+      free: true
+  mongodb.yaml: |
+    id: d690058d-666c-45d8-ba98-fcb9fb47742e
+    name: mongodb
+    description: KubeDB managed MongoDB
+    bindable: true
+    planupdatable: true
+    metadata:
+      displayName: KubeDB managed MongoDB
+      imageUrl: https://cdn.appscode.com/images/logo/databases/mongodb.png
+    plans:
+    - id: 498c12a6-7a68-4983-807b-75737f99062a
+      name: demo-mongodb
+      description: Demo Standalone MongoDB database
+      free: true
+    - id: 6af19c54-7757-42e5-bb74-b8350037c4a2
+      name: demo-mongodb-cluster
+      description: Demo MongoDB cluster
+      free: true
+    - id: e8f87ba6-0711-42db-a663-a3c75b78a541
+      name: mongodb
+      description: MongoDB database with custom specification
+      free: true
+  mysql.yaml: |
+    id: 938a70c5-f2bc-4658-82dd-566bed7797e9
+    name: mysql
+    description: KubeDB managed MySQL
+    bindable: true
+    planupdatable: true
+    metadata:
+      displayName: KubeDB managed MySQL
+      imageUrl: https://cdn.appscode.com/images/logo/databases/mysql.png
+    plans:
+    - id: 1fd1abf1-e8e1-44a2-8214-bf0fd1ce9417
+      name: demo-mysql
+      description: Demo MySQL database
+      free: true
+    - id: 6ed1ab9e-a640-4f26-9328-423b2e3816d7
+      name: mysql
+      description: MySQL database with custom specification
+      free: true
+  postgresql.yaml: |
+    id: 2010d83f-d908-4d9f-879c-ce8f5f527f2a
+    name: postgresql
+    description: KubeDB managed PostgreSQL
+    bindable: true
+    planupdatable: true
+    metadata:
+      displayName: KubeDB managed PostgreSQL
+      imageUrl: https://cdn.appscode.com/images/logo/databases/postgresql.png
+    plans:
+    - id: c4bcf392-7ebb-4623-a79d-13d00d761d56
+      name: demo-postgresql
+      description: Demo Standalone PostgreSQL database
+      free: true
+    - id: 41818203-0e2d-4d30-809f-a60c8c73dae8
+      name: demo-ha-postgresql
+      description: Demo HA PostgreSQL database
+      free: true
+    - id: 13373a9b-d5f5-4d9a-88df-d696bbc19071
+      name: postgresql
+      description: PostgreSQL database with custom specification
+      free: true
+  redis.yaml: |
+    id: ccfd1c81-e59f-4875-a39f-75ba55320ce0
+    name: redis
+    description: KubeDB managed Redis
+    bindable: true
+    planupdatable: true
+    metadata:
+      displayName: KubeDB managed Redis
+      imageUrl: https://cdn.appscode.com/images/logo/databases/redis.png
+    plans:
+    - id: 4b6ad8a7-272e-4cfd-bb38-5b9d4bd3962f
+      name: demo-redis
+      description: Demo Redis
+      free: true
+    - id: 45716530-cadb-4247-b06a-24a34200d734
+      name: redis
+      description: Redis with custom specification
+      free: true
+  
+---
+

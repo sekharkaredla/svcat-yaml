@@ -1,0 +1,110 @@
+---
+# Source: service-broker/templates/cluster-service-broker.yaml
+
+
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ClusterServiceBroker
+metadata:
+  name: release-name-service-broker
+  labels:
+    chart: "service-broker-0.3.1"
+    app: "service-broker"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  url: https://release-name-service-broker.default.svc
+  caBundle: 
+  authInfo:
+    bearer:
+      secretRef:
+        name: release-name-service-broker-accessor-token
+        namespace: catalog
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: release-name-service-broker-accessor
+  labels:
+    chart: "service-broker-0.3.1"
+    app: "service-broker"
+    release: "release-name"
+    heritage: "Tiller"
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: servicecatalog.k8s.io:broker-accessor
+subjects:
+  - kind: ServiceAccount
+    name: service-catalog-controller-manager
+    namespace: catalog
+---
+kind: Secret
+apiVersion: v1
+metadata:
+  name: release-name-service-broker-accessor-token
+  namespace: catalog
+  labels:
+    chart: "service-broker-0.3.1"
+    app: "service-broker"
+    release: "release-name"
+    heritage: "Tiller"
+  annotations:
+    kubernetes.io/service-account.name: service-catalog-controller-manager
+type: kubernetes.io/service-account-token
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: release-name-service-broker-apiserver-cert
+  namespace: default
+  labels:
+    chart: "service-broker-0.3.1"
+    app: "service-broker"
+    release: "release-name"
+    heritage: "Tiller"
+type: kubernetes.io/tls
+data:
+  tls.crt: 
+  tls.key: 
+---
+
+# to read the config for terminating authentication
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: release-name-service-broker-extension-server-authentication-reader
+  namespace: kube-system
+  labels:
+    chart: "service-broker-0.3.1"
+    app: "service-broker"
+    release: "release-name"
+    heritage: "Tiller"
+roleRef:
+  kind: Role
+  apiGroup: rbac.authorization.k8s.io
+  name: extension-apiserver-authentication-reader
+subjects:
+- kind: ServiceAccount
+  name: release-name-service-broker
+  namespace: default
+---
+# to delegate authentication and authorization
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: release-name-service-broker-auth-delegator
+  labels:
+    chart: "service-broker-0.3.1"
+    app: "service-broker"
+    release: "release-name"
+    heritage: "Tiller"
+roleRef:
+  kind: ClusterRole
+  apiGroup: rbac.authorization.k8s.io
+  name: system:auth-delegator
+subjects:
+- kind: ServiceAccount
+  name: release-name-service-broker
+  namespace: default
+
