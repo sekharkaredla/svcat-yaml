@@ -3,28 +3,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: release-name-service-broker
-  namespace: default
+  name: appscode-service-broker
+  namespace: kube-system
   labels:
     chart: "service-broker-0.3.1"
     app: "service-broker"
-    release: "release-name"
+    release: "appscode-service-broker"
     heritage: "Tiller"
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: service-broker
-      release: release-name
+      release: appscode-service-broker
   template:
     metadata:
       labels:
         chart: "service-broker-0.3.1"
         app: "service-broker"
-        release: "release-name"
+        release: "appscode-service-broker"
         heritage: "Tiller"
     spec:
-      serviceAccountName: release-name-service-broker
+      serviceAccountName: appscode-service-broker
       containers:
       - name: broker
         image: "appscode/service-broker:0.3.1"
@@ -68,7 +68,7 @@ spec:
       - name: serving-cert
         secret:
           defaultMode: 420
-          secretName: release-name-service-broker-apiserver-cert
+          secretName: appscode-service-broker-apiserver-cert
       - name: kubedb-volume
         configMap:
           name: kubedb

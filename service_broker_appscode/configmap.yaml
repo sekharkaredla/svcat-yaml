@@ -6,11 +6,11 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: kubedb
-  namespace: default
+  namespace: kube-system
   labels:
     chart: "service-broker-0.3.1"
     app: "service-broker"
-    release: "release-name"
+    release: "appscode-service-broker"
     heritage: "Tiller"
 data:
   elasticsearch.yaml: |

@@ -5,29 +5,29 @@
 apiVersion: servicecatalog.k8s.io/v1beta1
 kind: ClusterServiceBroker
 metadata:
-  name: release-name-service-broker
+  name: appscode-service-broker
   labels:
     chart: "service-broker-0.3.1"
     app: "service-broker"
-    release: "release-name"
+    release: "appscode-service-broker"
     heritage: "Tiller"
 spec:
-  url: https://release-name-service-broker.default.svc
+  url: https://appscode-service-broker.kube-system.svc
   caBundle: 
   authInfo:
     bearer:
       secretRef:
-        name: release-name-service-broker-accessor-token
+        name: appscode-service-broker-accessor-token
         namespace: catalog
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: release-name-service-broker-accessor
+  name: appscode-service-broker-accessor
   labels:
     chart: "service-broker-0.3.1"
     app: "service-broker"
-    release: "release-name"
+    release: "appscode-service-broker"
     heritage: "Tiller"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -41,12 +41,12 @@ subjects:
 kind: Secret
 apiVersion: v1
 metadata:
-  name: release-name-service-broker-accessor-token
+  name: appscode-service-broker-accessor-token
   namespace: catalog
   labels:
     chart: "service-broker-0.3.1"
     app: "service-broker"
-    release: "release-name"
+    release: "appscode-service-broker"
     heritage: "Tiller"
   annotations:
     kubernetes.io/service-account.name: service-catalog-controller-manager
@@ -56,29 +56,25 @@ type: kubernetes.io/service-account-token
 apiVersion: v1
 kind: Secret
 metadata:
-  name: release-name-service-broker-apiserver-cert
-  namespace: default
+  name: appscode-service-broker-apiserver-cert
+  namespace: kube-system
   labels:
     chart: "service-broker-0.3.1"
     app: "service-broker"
-    release: "release-name"
+    release: "appscode-service-broker"
     heritage: "Tiller"
-type: kubernetes.io/tls
-data:
-  tls.crt: 
-  tls.key: 
 ---
 
 # to read the config for terminating authentication
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: release-name-service-broker-extension-server-authentication-reader
+  name: appscode-service-broker-extension-server-authentication-reader
   namespace: kube-system
   labels:
     chart: "service-broker-0.3.1"
     app: "service-broker"
-    release: "release-name"
+    release: "appscode-service-broker"
     heritage: "Tiller"
 roleRef:
   kind: Role
@@ -86,18 +82,18 @@ roleRef:
   name: extension-apiserver-authentication-reader
 subjects:
 - kind: ServiceAccount
-  name: release-name-service-broker
-  namespace: default
+  name: appscode-service-broker
+  namespace: kube-system
 ---
 # to delegate authentication and authorization
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: release-name-service-broker-auth-delegator
+  name: appscode-service-broker-auth-delegator
   labels:
     chart: "service-broker-0.3.1"
     app: "service-broker"
-    release: "release-name"
+    release: "appscode-service-broker"
     heritage: "Tiller"
 roleRef:
   kind: ClusterRole
@@ -105,6 +101,6 @@ roleRef:
   name: system:auth-delegator
 subjects:
 - kind: ServiceAccount
-  name: release-name-service-broker
-  namespace: default
+  name: appscode-service-broker
+  namespace: kube-system
 
