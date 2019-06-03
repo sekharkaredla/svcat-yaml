@@ -1,0 +1,32 @@
+---
+# Source: catalog/templates/apiregistration.yaml
+
+apiVersion: apiregistration.k8s.io/v1beta1
+kind: APIService
+metadata:
+  name: v1beta1.servicecatalog.k8s.io
+spec:
+  group: servicecatalog.k8s.io
+  version: v1beta1
+  service:
+    namespace: default
+    name: release-name-catalog-apiserver
+  caBundle: 
+  groupPriorityMinimum: 10000
+  versionPriority: 20
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: release-name-catalog-apiserver-cert
+  labels:
+    app: release-name-catalog-apiserver
+    chart: "catalog-0.2.0"
+    release: "release-name"
+    heritage: "Tiller"
+type: Opaque
+data:
+  tls.crt: 
+  tls.key: 
+

@@ -1,0 +1,21 @@
+---
+# Source: catalog/templates/controller-manager-service.yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: release-name-catalog-controller-manager
+  labels:
+    app: release-name-catalog-controller-manager
+    chart: "catalog-0.2.0"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  type: ClusterIP
+  selector:
+    app: release-name-catalog-controller-manager
+  ports:
+  - name: secure
+    protocol: TCP
+    port: 443
+    targetPort: 8444
+
