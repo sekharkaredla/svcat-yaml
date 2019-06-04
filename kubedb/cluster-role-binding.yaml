@@ -1,0 +1,22 @@
+---
+# Source: kubedb/templates/cluster-role-binding.yaml
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kubedb-operator
+  labels:
+    chart: "kubedb-0.11.0"
+    app: "kubedb"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kubedb-operator
+subjects:
+- kind: ServiceAccount
+  name: kubedb-operator
+  namespace: kube-system
+
+

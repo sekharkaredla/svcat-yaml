@@ -1,0 +1,26 @@
+---
+# Source: kubedb-catalog/templates/etcd.yaml
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: EtcdVersion
+metadata:
+  name: "3.2.13"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  version: "3.2.13"
+  db:
+    image: "kubedb/etcd:v3.2.13"
+  exporter:
+    image: "kubedb/etcd:v3.2.13"
+  tools:
+    image: "kubedb/etcd-tools:3.2.13"
+  podSecurityPolicies:
+    databasePolicyName: etcd-db
+    snapshotterPolicyName: etcd-snapshot
+
+

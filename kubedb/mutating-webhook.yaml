@@ -1,0 +1,109 @@
+---
+# Source: kubedb/templates/mutating-webhook.yaml
+# GKE returns Major:"1", Minor:"10+"
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: mutators.kubedb.com
+  labels:
+    chart: "kubedb-0.11.0"
+    app: "kubedb"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation
+webhooks:
+- name: elasticsearch.mutators.kubedb.com
+  clientConfig:
+    service:
+      namespace: default
+      name: kubernetes
+      path: /apis/mutators.kubedb.com/v1alpha1/elasticsearches
+    caBundle: bm90LWNhLWNlcnQ=
+  rules:
+  - apiGroups: ["kubedb.com"]
+    apiVersions: ["*"]
+    resources: ["elasticsearches"]
+    operations: ["CREATE", "UPDATE"]
+  failurePolicy: Fail
+- name: postgres.mutators.kubedb.com
+  clientConfig:
+    service:
+      namespace: default
+      name: kubernetes
+      path: /apis/mutators.kubedb.com/v1alpha1/postgreses
+    caBundle: bm90LWNhLWNlcnQ=
+  rules:
+  - apiGroups: ["kubedb.com"]
+    apiVersions: ["*"]
+    resources: ["postgreses"]
+    operations: ["CREATE", "UPDATE"]
+  failurePolicy: Fail
+- name: mysql.mutators.kubedb.com
+  clientConfig:
+    service:
+      namespace: default
+      name: kubernetes
+      path: /apis/mutators.kubedb.com/v1alpha1/mysqls
+    caBundle: bm90LWNhLWNlcnQ=
+  rules:
+  - apiGroups: ["kubedb.com"]
+    apiVersions: ["*"]
+    resources: ["mysqls"]
+    operations: ["CREATE", "UPDATE"]
+  failurePolicy: Fail
+- name: mongodb.mutators.kubedb.com
+  clientConfig:
+    service:
+      namespace: default
+      name: kubernetes
+      path: /apis/mutators.kubedb.com/v1alpha1/mongodbs
+    caBundle: bm90LWNhLWNlcnQ=
+  rules:
+  - apiGroups: ["kubedb.com"]
+    apiVersions: ["*"]
+    resources: ["mongodbs"]
+    operations: ["CREATE", "UPDATE"]
+  failurePolicy: Fail
+- name: redis.mutators.kubedb.com
+  clientConfig:
+    service:
+      namespace: default
+      name: kubernetes
+      path: /apis/mutators.kubedb.com/v1alpha1/redises
+    caBundle: bm90LWNhLWNlcnQ=
+  rules:
+  - apiGroups: ["kubedb.com"]
+    apiVersions: ["*"]
+    resources: ["redises"]
+    operations: ["CREATE", "UPDATE"]
+  failurePolicy: Fail
+- name: memcached.mutators.kubedb.com
+  clientConfig:
+    service:
+      namespace: default
+      name: kubernetes
+      path: /apis/mutators.kubedb.com/v1alpha1/memcacheds
+    caBundle: bm90LWNhLWNlcnQ=
+  rules:
+  - apiGroups: ["kubedb.com"]
+    apiVersions: ["*"]
+    resources: ["memcacheds"]
+    operations: ["CREATE", "UPDATE"]
+  failurePolicy: Fail
+- name: etcd.mutators.kubedb.com
+  clientConfig:
+    service:
+      namespace: default
+      name: kubernetes
+      path: /apis/mutators.kubedb.com/v1alpha1/etcds
+    caBundle: bm90LWNhLWNlcnQ=
+  rules:
+  - apiGroups: ["kubedb.com"]
+    apiVersions: ["*"]
+    resources: ["etcds"]
+    operations: ["CREATE", "UPDATE"]
+  failurePolicy: Fail
+
+

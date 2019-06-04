@@ -1,0 +1,264 @@
+---
+# Source: kubedb-catalog/templates/redis.yaml
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: RedisVersion
+metadata:
+  name: "4"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "4"
+  db:
+    image: "kubedb/redis:4"
+  exporter:
+    image: "kubedb/operator:0.8.0"
+  podSecurityPolicies:
+    databasePolicyName: redis-db
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: RedisVersion
+metadata:
+  name: "4-v1"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "4"
+  db:
+    image: "kubedb/redis:4-v1"
+  exporter:
+    image: "kubedb/redis_exporter:v0.21.1"
+  podSecurityPolicies:
+    databasePolicyName: redis-db
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: RedisVersion
+metadata:
+  name: "4.0"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "4.0"
+  db:
+    image: "kubedb/redis:4.0"
+  exporter:
+    image: "kubedb/operator:0.8.0"
+  podSecurityPolicies:
+    databasePolicyName: redis-db
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: RedisVersion
+metadata:
+  name: "4.0-v1"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "4.0"
+  db:
+    image: "kubedb/redis:4.0-v1"
+  exporter:
+    image: "kubedb/redis_exporter:v0.21.1"
+  podSecurityPolicies:
+    databasePolicyName: redis-db
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: RedisVersion
+metadata:
+  name: "4.0.6"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "4.0.6"
+  db:
+    image: "kubedb/redis:4.0.6"
+  exporter:
+    image: "kubedb/operator:0.8.0"
+  podSecurityPolicies:
+    databasePolicyName: redis-db
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: RedisVersion
+metadata:
+  name: "4.0.6-v1"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "4.0.6"
+  db:
+    image: "kubedb/redis:4.0.6-v1"
+  exporter:
+    image: "kubedb/redis_exporter:v0.21.1"
+  podSecurityPolicies:
+    databasePolicyName: redis-db
+
+---
+# After 0.9.0
+
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: RedisVersion
+metadata:
+  name: "4.0-v2"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  version: "4.0"
+  db:
+    image: "kubedb/redis:4.0-v2"
+  exporter:
+    image: "kubedb/redis_exporter:v0.21.1"
+  podSecurityPolicies:
+    databasePolicyName: redis-db
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: RedisVersion
+metadata:
+  name: "4.0.6-v2"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  version: "4.0.6"
+  db:
+    image: "kubedb/redis:4.0.6-v2"
+  exporter:
+    image: "kubedb/redis_exporter:v0.21.1"
+  podSecurityPolicies:
+    databasePolicyName: redis-db
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: RedisVersion
+metadata:
+  name: "4.0.11"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  version: "4.0.11"
+  db:
+    image: "kubedb/redis:4.0.11"
+  exporter:
+    image: "kubedb/redis_exporter:v0.21.1"
+  podSecurityPolicies:
+    databasePolicyName: redis-db
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: RedisVersion
+metadata:
+  name: "5.0"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "5.0"
+  db:
+    image: "kubedb/redis:5.0"
+  exporter:
+    image: "kubedb/redis_exporter:v0.21.1"
+  podSecurityPolicies:
+    databasePolicyName: redis-db
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: RedisVersion
+metadata:
+  name: "5.0.3"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "5.0.3"
+  db:
+    image: "kubedb/redis:5.0.3"
+  exporter:
+    image: "kubedb/redis_exporter:v0.21.1"
+  podSecurityPolicies:
+    databasePolicyName: redis-db
+
+---
+# After 0.10.0
+
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: RedisVersion
+metadata:
+  name: "5.0-v1"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  version: "5.0"
+  db:
+    image: "kubedb/redis:5.0-v1"
+  exporter:
+    image: "kubedb/redis_exporter:v0.21.1"
+  podSecurityPolicies:
+    databasePolicyName: redis-db
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: RedisVersion
+metadata:
+  name: "5.0.3-v1"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  version: "5.0.3"
+  db:
+    image: "kubedb/redis:5.0.3-v1"
+  exporter:
+    image: "kubedb/redis_exporter:v0.21.1"
+  podSecurityPolicies:
+    databasePolicyName: redis-db
+
+
+

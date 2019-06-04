@@ -1,0 +1,58 @@
+---
+# Source: kubedb-catalog/templates/postgres-psp.yaml
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: postgres-db
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  privileged: false
+  allowPrivilegeEscalation: false
+  volumes:
+  - "*"
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  runAsUser:
+    rule: RunAsAny
+  seLinux:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  fsGroup:
+    rule: RunAsAny
+  allowedCapabilities:
+  - IPC_LOCK
+  - SYS_RESOURCE
+
+---
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: postgres-snapshot
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  privileged: false
+  allowPrivilegeEscalation: false
+  volumes:
+  - "*"
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  runAsUser:
+    rule: RunAsAny
+  seLinux:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  fsGroup:
+    rule: RunAsAny
+

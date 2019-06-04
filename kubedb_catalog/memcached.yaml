@@ -1,0 +1,83 @@
+---
+# Source: kubedb-catalog/templates/memcached.yaml
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MemcachedVersion
+metadata:
+  name: "1.5"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "1.5"
+  db:
+    image: "kubedb/memcached:1.5"
+  exporter:
+    image: "kubedb/operator:0.8.0"
+  podSecurityPolicies:
+    databasePolicyName: memcached-db
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MemcachedVersion
+metadata:
+  name: "1.5-v1"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  version: "1.5"
+  db:
+    image: "kubedb/memcached:1.5-v1"
+  exporter:
+    image: "kubedb/memcached-exporter:v0.4.1"
+  podSecurityPolicies:
+    databasePolicyName: memcached-db
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MemcachedVersion
+metadata:
+  name: "1.5.4"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "1.5.4"
+  db:
+    image: "kubedb/memcached:1.5.4"
+  exporter:
+    image: "kubedb/operator:0.8.0"
+  podSecurityPolicies:
+    databasePolicyName: memcached-db
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MemcachedVersion
+metadata:
+  name: "1.5.4-v1"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  version: "1.5.4"
+  db:
+    image: "kubedb/memcached:1.5.4-v1"
+  exporter:
+    image: "kubedb/memcached-exporter:v0.4.1"
+  podSecurityPolicies:
+    databasePolicyName: memcached-db
+
+
+

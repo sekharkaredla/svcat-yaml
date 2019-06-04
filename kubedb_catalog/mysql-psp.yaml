@@ -1,0 +1,55 @@
+---
+# Source: kubedb-catalog/templates/mysql-psp.yaml
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: mysql-db
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  privileged: false
+  allowPrivilegeEscalation: false
+  volumes:
+  - "*"
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  runAsUser:
+    rule: RunAsAny
+  seLinux:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  fsGroup:
+    rule: RunAsAny
+
+---
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: mysql-snapshot
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec: #same spec as db
+  privileged: false
+  allowPrivilegeEscalation: false
+  volumes:
+  - "*"
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  runAsUser:
+    rule: RunAsAny
+  seLinux:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  fsGroup:
+    rule: RunAsAny
+

@@ -1,0 +1,97 @@
+---
+# Source: kubedb/templates/apiregistration.yaml
+
+apiVersion: apiregistration.k8s.io/v1beta1
+kind: APIService
+metadata:
+  name: v1alpha1.validators.kubedb.com
+  labels:
+    chart: "kubedb-0.11.0"
+    app: "kubedb"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  group: validators.kubedb.com
+  version: v1alpha1
+  service:
+    namespace: kube-system
+    name: kubedb-operator
+  caBundle: 
+  groupPriorityMinimum: 10000
+  versionPriority: 15
+---
+apiVersion: apiregistration.k8s.io/v1beta1
+kind: APIService
+metadata:
+  name: v1alpha1.mutators.kubedb.com
+  labels:
+    chart: "kubedb-0.11.0"
+    app: "kubedb"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  group: mutators.kubedb.com
+  version: v1alpha1
+  service:
+    namespace: kube-system
+    name: kubedb-operator
+  caBundle: 
+  groupPriorityMinimum: 10000
+  versionPriority: 15
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: kubedb-operator-apiserver-cert
+  namespace: kube-system
+  labels:
+    chart: "kubedb-0.11.0"
+    app: "kubedb"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+type: Opaque
+data:
+  tls.crt: 
+  tls.key: 
+---
+
+
+# to read the config for terminating authentication
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: kubedb-operator-apiserver-extension-server-authentication-reader
+  namespace: kube-system
+  labels:
+    chart: "kubedb-0.11.0"
+    app: "kubedb"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+roleRef:
+  kind: Role
+  apiGroup: rbac.authorization.k8s.io
+  name: extension-apiserver-authentication-reader
+subjects:
+- kind: ServiceAccount
+  name: kubedb-operator
+  namespace: kube-system
+---
+# to delegate authentication and authorization
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kubedb-operator-apiserver-auth-delegator
+  labels:
+    chart: "kubedb-0.11.0"
+    app: "kubedb"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+roleRef:
+  kind: ClusterRole
+  apiGroup: rbac.authorization.k8s.io
+  name: system:auth-delegator
+subjects:
+- kind: ServiceAccount
+  name: kubedb-operator
+  namespace: kube-system
+

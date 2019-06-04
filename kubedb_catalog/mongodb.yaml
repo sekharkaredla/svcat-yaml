@@ -1,0 +1,226 @@
+---
+# Source: kubedb-catalog/templates/mongodb.yaml
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MongoDBVersion
+metadata:
+  name: "3.4"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "3.4"
+  db:
+    image: "kubedb/mongo:3.4"
+  exporter:
+    image: "kubedb/operator:0.8.0"
+  tools:
+    image: "kubedb/mongo-tools:3.4"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mongodb-db
+    snapshotterPolicyName: mongodb-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MongoDBVersion
+metadata:
+  name: "3.4-v1"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "3.4"
+  db:
+    image: "kubedb/mongo:3.4-v1"
+  exporter:
+    image: "kubedb/mongodb_exporter:v1.0.0"
+  tools:
+    image: "kubedb/mongo-tools:3.4-v2"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mongodb-db
+    snapshotterPolicyName: mongodb-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MongoDBVersion
+metadata:
+  name: "3.6"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "3.6"
+  db:
+    image: "kubedb/mongo:3.6"
+  exporter:
+    image: "kubedb/operator:0.8.0"
+  tools:
+    image: "kubedb/mongo-tools:3.6"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mongodb-db
+    snapshotterPolicyName: mongodb-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MongoDBVersion
+metadata:
+  name: "3.6-v1"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "3.6"
+  db:
+    image: "kubedb/mongo:3.6-v1"
+  exporter:
+    image: "kubedb/mongodb_exporter:v1.0.0"
+  tools:
+    image: "kubedb/mongo-tools:3.6-v2"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mongodb-db
+    snapshotterPolicyName: mongodb-snapshot
+
+---
+# After 0.9.0
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MongoDBVersion
+metadata:
+  name: "3.4-v2"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  version: "3.4"
+  db:
+    image: "kubedb/mongo:3.4-v2"
+  exporter:
+    image: "kubedb/mongodb_exporter:v1.0.0"
+  tools:
+    image: "kubedb/mongo-tools:3.4-v2"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mongodb-db
+    snapshotterPolicyName: mongodb-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MongoDBVersion
+metadata:
+  name: "3.6-v2"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  version: "3.6"
+  db:
+    image: "kubedb/mongo:3.6-v2"
+  exporter:
+    image: "kubedb/mongodb_exporter:v1.0.0"
+  tools:
+    image: "kubedb/mongo-tools:3.6-v2"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mongodb-db
+    snapshotterPolicyName: mongodb-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MongoDBVersion
+metadata:
+  name: "4.0.5"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  version: "4.0.5"
+  db:
+    image: "kubedb/mongo:4.0.5"
+  exporter:
+    image: "kubedb/mongodb_exporter:v1.0.0"
+  tools:
+    image: "kubedb/mongo-tools:4.0.5"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mongodb-db
+    snapshotterPolicyName: mongodb-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MongoDBVersion
+metadata:
+  name: "4.0"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  version: "4.0.5"
+  db:
+    image: "kubedb/mongo:4.0"
+  exporter:
+    image: "kubedb/mongodb_exporter:v1.0.0"
+  tools:
+    image: "kubedb/mongo-tools:4.0"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mongodb-db
+    snapshotterPolicyName: mongodb-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MongoDBVersion
+metadata:
+  name: "4.1.7"
+  labels:
+    chart: "kubedb-catalog-0.11.0"
+    app: "kubedb-catalog"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  version: "4.1.7"
+  db:
+    image: "kubedb/mongo:4.1.7"
+  exporter:
+    image: "kubedb/mongodb_exporter:v1.0.0"
+  tools:
+    image: "kubedb/mongo-tools:4.1.7"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mongodb-db
+    snapshotterPolicyName: mongodb-snapshot
+
+
+

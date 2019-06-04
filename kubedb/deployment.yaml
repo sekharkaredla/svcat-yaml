@@ -1,0 +1,85 @@
+---
+# Source: kubedb/templates/deployment.yaml
+# GKE returns Major:"1", Minor:"10+"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubedb-operator
+  namespace: kube-system
+  labels:
+    chart: "kubedb-0.11.0"
+    app: "kubedb"
+    release: "kubedb-operator"
+    heritage: "Tiller"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "kubedb"
+      release: "kubedb-operator"
+  template:
+    metadata:
+      labels:
+        chart: "kubedb-0.11.0"
+        app: "kubedb"
+        release: "kubedb-operator"
+        heritage: "Tiller"
+    spec:
+      serviceAccountName: kubedb-operator
+      containers:
+      - name: operator
+        image: kubedb/operator:0.11.0
+        imagePullPolicy: IfNotPresent
+        args:
+        - run
+        - --v=3
+        - --governing-service=kubedb
+        - --rbac=true
+        - --secure-port=8443
+        - --audit-log-path=-
+        - --tls-cert-file=/var/serving-cert/tls.crt
+        - --tls-private-key-file=/var/serving-cert/tls.key
+        - --enable-mutating-webhook=true
+        - --enable-validating-webhook=true
+        - --bypass-validating-webhook-xray=false
+        - --use-kubeapiserver-fqdn-for-aks=true
+        - --enable-analytics=true
+        env:
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: MY_POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        ports:
+        - containerPort: 8443
+        volumeMounts:
+        - mountPath: /var/serving-cert
+          name: serving-cert
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8443
+            scheme: HTTPS
+          initialDelaySeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8443
+            scheme: HTTPS
+          initialDelaySeconds: 15
+          timeoutSeconds: 15
+        resources:
+          requests:
+            cpu: "100m"
+      volumes:
+      - name: serving-cert
+        secret:
+          defaultMode: 420
+          secretName: kubedb-operator-apiserver-cert
+      nodeSelector:
+        beta.kubernetes.io/arch: amd64
+        beta.kubernetes.io/os: linux
+        
