@@ -1,0 +1,11 @@
+kubectl run curl --image=radial/busyboxplus:curl -i --tty -n pool2
+
+kubectl attach curl-66bdcf564-dfmm5 -c curl -i -t -n pool2
+
+kubectl exec -it secret-test-pod-2 -n test-ns -- /bin/bash
+
+kubectl exec -it mysql-appscode3-0 -n test-ns -- /bin/bash
+
+kubectl exec -it flask-pod -n test-ns -- /bin/bash
+
+kubectl attach curl-66bdcf564-wr4j9 -c curl -i -t -n test-ns
