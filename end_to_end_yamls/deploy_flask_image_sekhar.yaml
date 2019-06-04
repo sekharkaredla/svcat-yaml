@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: flask-pod
+  labels:
+    app: flask-pod
+spec:
+  containers:
+    - name: test-container
+      image: sekharkaredla/flask-mysql-basic:trytwo
+      env:
+      - name: MYSQL_USER
+        valueFrom:
+          secretKeyRef:
+            name: mysqld-appscode-secret
+            key: username
+      - name: MYSQL_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mysqld-appscode-secret
+            key: password
+      - name: MYSQL_HOST
+        valueFrom:
+          secretKeyRef:
+            name: mysqld-appscode-secret
+            key: host

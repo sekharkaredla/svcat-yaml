@@ -1,0 +1,18 @@
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceInstance
+metadata:
+  name: mysql-appscode3
+  namespace: test-ns
+  labels:
+    app: appscode-service-broker
+spec:
+  clusterServiceClassExternalName: mysql
+  clusterServicePlanExternalName: mysql
+  parameters:
+    metadata:
+      labels:
+        app: my-mysql
+    spec:
+      version: "8.0-v1"
+      storageType: Ephemeral
+      terminationPolicy: WipeOut

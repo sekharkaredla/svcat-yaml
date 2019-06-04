@@ -1,0 +1,328 @@
+---
+# Source: kubedb-catalog/templates/mysql.yaml
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MySQLVersion
+metadata:
+  name: "5"
+  labels:
+    chart: "kubedb-catalog-0.12.0"
+    app: "kubedb-catalog"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "5"
+  db:
+    image: "kubedb/mysql:5"
+  exporter:
+    image: "kubedb/operator:0.8.0"
+  tools:
+    image: "kubedb/mysql-tools:5"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mysql-db
+    snapshotterPolicyName: mysql-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MySQLVersion
+metadata:
+  name: "5-v1"
+  labels:
+    chart: "kubedb-catalog-0.12.0"
+    app: "kubedb-catalog"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "5"
+  db:
+    image: "kubedb/mysql:5-v1"
+  exporter:
+    image: "kubedb/mysqld-exporter:v0.11.0"
+  tools:
+    image: "kubedb/mysql-tools:5-v2"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mysql-db
+    snapshotterPolicyName: mysql-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MySQLVersion
+metadata:
+  name: "5.7"
+  labels:
+    chart: "kubedb-catalog-0.12.0"
+    app: "kubedb-catalog"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "5.7"
+  db:
+    image: "kubedb/mysql:5.7"
+  exporter:
+    image: "kubedb/operator:0.8.0"
+  tools:
+    image: "kubedb/mysql-tools:5.7"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mysql-db
+    snapshotterPolicyName: mysql-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MySQLVersion
+metadata:
+  name: "5.7-v1"
+  labels:
+    chart: "kubedb-catalog-0.12.0"
+    app: "kubedb-catalog"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "5.7"
+  db:
+    image: "kubedb/mysql:5.7-v1"
+  exporter:
+    image: "kubedb/mysqld-exporter:v0.11.0"
+  tools:
+    image: "kubedb/mysql-tools:5.7-v2"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mysql-db
+    snapshotterPolicyName: mysql-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MySQLVersion
+metadata:
+  name: "8"
+  labels:
+    chart: "kubedb-catalog-0.12.0"
+    app: "kubedb-catalog"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "8"
+  db:
+    image: "kubedb/mysql:8"
+  exporter:
+    image: "kubedb/operator:0.8.0"
+  tools:
+    image: "kubedb/mysql-tools:8"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mysql-db
+    snapshotterPolicyName: mysql-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MySQLVersion
+metadata:
+  name: "8-v1"
+  labels:
+    chart: "kubedb-catalog-0.12.0"
+    app: "kubedb-catalog"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "8"
+  db:
+    image: "kubedb/mysql:8-v1"
+  exporter:
+    image: "kubedb/mysqld-exporter:v0.11.0"
+  tools:
+    image: "kubedb/mysql-tools:8-v2"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mysql-db
+    snapshotterPolicyName: mysql-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MySQLVersion
+metadata:
+  name: "8.0"
+  labels:
+    chart: "kubedb-catalog-0.12.0"
+    app: "kubedb-catalog"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  deprecated: true
+  version: "8.0"
+  db:
+    image: "kubedb/mysql:8.0"
+  exporter:
+    image: "kubedb/operator:0.8.0"
+  tools:
+    image: "kubedb/mysql-tools:8.0"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mysql-db
+    snapshotterPolicyName: mysql-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MySQLVersion
+metadata:
+  name: "8.0-v1"
+  labels:
+    chart: "kubedb-catalog-0.12.0"
+    app: "kubedb-catalog"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  version: "8.0.3"
+  db:
+    image: "kubedb/mysql:8.0-v1"
+  exporter:
+    image: "kubedb/mysqld-exporter:v0.11.0"
+  tools:
+    image: "kubedb/mysql-tools:8.0-v2"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mysql-db
+    snapshotterPolicyName: mysql-snapshot
+
+---
+# After 0.9.0
+
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MySQLVersion
+metadata:
+  name: "8.0-v2"
+  labels:
+    chart: "kubedb-catalog-0.12.0"
+    app: "kubedb-catalog"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  version: "8.0.14"
+  db:
+    image: "kubedb/mysql:8.0-v2"
+  exporter:
+    image: "kubedb/mysqld-exporter:v0.11.0"
+  tools:
+    image: "kubedb/mysql-tools:8.0-v3"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mysql-db
+    snapshotterPolicyName: mysql-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MySQLVersion
+metadata:
+  name: "8.0.3"
+  labels:
+    chart: "kubedb-catalog-0.12.0"
+    app: "kubedb-catalog"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  version: "8.0.3"
+  db:
+    image: "kubedb/mysql:8.0.3"
+  exporter:
+    image: "kubedb/mysqld-exporter:v0.11.0"
+  tools:
+    image: "kubedb/mysql-tools:8.0.3"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mysql-db
+    snapshotterPolicyName: mysql-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MySQLVersion
+metadata:
+  name: "8.0.14"
+  labels:
+    chart: "kubedb-catalog-0.12.0"
+    app: "kubedb-catalog"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  version: "8.0.14"
+  db:
+    image: "kubedb/mysql:8.0.14"
+  exporter:
+    image: "kubedb/mysqld-exporter:v0.11.0"
+  tools:
+    image: "kubedb/mysql-tools:8.0.14"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mysql-db
+    snapshotterPolicyName: mysql-snapshot
+
+---
+# After 0.11.0
+
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MySQLVersion
+metadata:
+  name: "5.7-v2"
+  labels:
+    chart: "kubedb-catalog-0.12.0"
+    app: "kubedb-catalog"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  version: "5.7.25"
+  db:
+    image: "kubedb/mysql:5.7-v2"
+  exporter:
+    image: "kubedb/mysqld-exporter:v0.11.0"
+  tools:
+    image: "kubedb/mysql-tools:5.7-v2"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mysql-db
+    snapshotterPolicyName: mysql-snapshot
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: MySQLVersion
+metadata:
+  name: "5.7.25"
+  labels:
+    chart: "kubedb-catalog-0.12.0"
+    app: "kubedb-catalog"
+    release: "release-name"
+    heritage: "Tiller"
+spec:
+  version: "5.7.25"
+  db:
+    image: "kubedb/mysql:5.7.25"
+  exporter:
+    image: "kubedb/mysqld-exporter:v0.11.0"
+  tools:
+    image: "kubedb/mysql-tools:5.7.25"
+  initContainer:
+    image: "kubedb/busybox"
+  podSecurityPolicies:
+    databasePolicyName: mysql-db
+    snapshotterPolicyName: mysql-snapshot
+
+
+
