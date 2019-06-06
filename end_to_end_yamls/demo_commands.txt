@@ -1,0 +1,28 @@
+creation : 
+kubectl create namespace demo
+
+svcat get classes
+
+svcat get plans
+
+kubectl create -f catalog_converted/end_to_end_yamls/mysql-instance.yaml
+
+kubectl create -f catalog_converted/end_to_end_yamls/mysql-binding.yaml
+
+kubectl create -f catalog_converted/end_to_end_yamls/deploy_flask_image_sekhar.yaml
+
+kubectl create -f catalog_converted/end_to_end_yamls/expose_flask_service.yaml
+---------------
+testing :
+
+kubectl run curl --image=radial/busyboxplus:curl -i --tty -n demo5
+
+# kubectl attach curl-66bdcf564-wr4j9 -c curl -i -t -n final-demo
+
+
+curl 10.104.22.133:8080/db/tempdb
+curl 10.104.22.133:8080/table/temptable
+
+curl -d {\"sid\":\"x123\",\"name\":\"swetha\",\"desgn\":\"sep\"} -H "Content-Type: application/json" -X POST "10.104.22.133:8080/data"
+
+curl 10.104.22.133:8080/data/x123

@@ -1,17 +1,17 @@
 apiVersion: servicecatalog.k8s.io/v1beta1
 kind: ServiceInstance
 metadata:
-  name: mysql-appscode3
-  namespace: test-ns
+  name: mysql-demo-instance
+  namespace: demo10
   labels:
-    app: appscode-service-broker
+    app: demo-flask-pod-mysql-10
 spec:
   clusterServiceClassExternalName: mysql
   clusterServicePlanExternalName: mysql
   parameters:
     metadata:
       labels:
-        app: my-mysql
+        app: demo-app-pod-mysql-instance-10
     spec:
       version: "8.0-v1"
       storageType: Ephemeral

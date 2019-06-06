@@ -1,0 +1,11 @@
+apiVersion: servicecatalog.k8s.io/v1beta1
+kind: ServiceBinding
+metadata:
+  name: mysql-demo-binding
+  namespace: demo10
+  labels:
+    app: demo-flask-pod-mysql-10
+spec:
+  instanceRef:
+    name: mysql-demo-instance
+  secretName: mysql-demo-instance-secret
